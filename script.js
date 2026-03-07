@@ -7,7 +7,8 @@ import {
   get,
   update,
   onValue,
-  push
+  push,
+  remove
 } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js';
 
 const firebaseConfig = {
@@ -20,7 +21,7 @@ const firebaseConfig = {
   appId: "1:161558821877:web:18b614318f51f7e843bebc"
 };
 
-
+const ROOM_LIFETIME_MS = 60 * 60 * 1000; 
 const firebaseConfigured = !Object.values(firebaseConfig).some(value => String(value).startsWith('PASTE_YOUR'));
 
 let app = null;
@@ -374,6 +375,27 @@ async function makeGuess() {
   }
 }
 
+async function cleanupExpiredRooms() {
+  if (!firebaseConfigured) return;
+
+  const roomsRef = ref(db, 'rooms');
+  const snapshot = await get(roomsRef);
+
+  if (!snapshot.exists()) return;
+
+  const rooms = snapshot.val();
+  const now = Date.now();
+
+  for (const [roomCode, roomData] of Object.entries(rooms)) {
+    const lastActivity = roomData.lastActivity || roomData.createdAt || 0;
+    const isExpired = now - lastActivity > ROOM_LIFETIME_MS;
+
+    if (isExpired) {
+      await remove(ref(db, `rooms/${roomCode}`));
+    }
+  }
+}
+
 async function createRoom() {
   if (!firebaseConfigured) {
     alert('You need to paste your Firebase config into script.js first.');
@@ -591,6 +613,7 @@ function applyRoomFromUrl() {
   }
 }
 
+cleanupExpiredRooms();
 applyRoomFromUrl();
 renderGuessOptions();
 renderCharacters();
