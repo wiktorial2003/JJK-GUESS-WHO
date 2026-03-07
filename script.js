@@ -7,12 +7,14 @@ import {
   get,
   update,
   onValue,
-  getAuth,
-  signInAnonymously,
-  onAuthStateChanged,
   push,
   remove
 } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js';
+
+import {
+  getAuth,
+  signInAnonymously
+} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBkgtA_dhslvLf4q9h52zC2PeCaaadQpf0",
