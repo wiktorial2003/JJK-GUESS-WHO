@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JJK Guess Who Online</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>JJK Guess Who Online</h1>
+    <p class="subtitle">Host on GitHub Pages and play with a friend using Firebase Realtime Database.</p>
+
+    <div class="top-grid">
+      <section class="card">
+        <h2>Room Setup</h2>
+        <p class="small">
+          Player 1 creates a room. Player 2 joins with the same room code or invite link.
+        </p>
+
+        <label for="playerName">Display name</label>
+        <input id="playerName" type="text" maxlength="20" placeholder="Enter your name" />
+
+        <label for="roomCode">Room code</label>
+        <div class="row">
+          <input id="roomCode" type="text" maxlength="12" placeholder="e.g. JJK123" />
+          <button id="randomCodeBtn" class="secondary" type="button">Random</button>
+        </div>
+
+        <div class="row button-row">
+          <button id="createRoomBtn" type="button">Create Room</button>
+          <button id="joinRoomBtn" class="secondary" type="button">Join Room</button>
+        </div>
+
+        <button id="copyInviteBtn" class="success hidden" type="button">Copy Invite Link</button>
+      </section>
+
+      <section class="card">
+        <h2>How to Play</h2>
+        <ol>
+          <li>Create or join a room.</li>
+          <li>Both players pick a secret JJK character.</li>
+          <li>Take turns asking yes/no questions.</li>
+          <li>Click cards on your board to eliminate characters.</li>
+          <li>Guess the opponent's character to win.</li>
+        </ol>
+        <p class="small">The answers are verified automatically from the opponent's selected character.</p>
+      </section>
+    </div>
+
+    <main id="gameArea" class="hidden">
+      <div class="status" id="statusText">Waiting for room...</div>
+
+      <div class="game-grid">
+        <section class="card">
+          <div class="board-header">
+            <div>
+              <h2>Your Board</h2>
+              <p class="small">Pick your secret character first. After that, click cards to cross them out on your board.</p>
+            </div>
+            <div class="player-pills">
+              <span class="pill" id="youLabel">You: -</span>
+              <span class="pill" id="opponentLabel">Opponent: -</span>
+            </div>
+          </div>
+
+          <div id="secretChoiceBox" class="secret-choice">Your secret character: not selected</div>
+          <div id="characterGrid" class="character-grid"></div>
+        </section>
+
+        <div class="panel-stack">
+          <section class="card">
+            <h2>Ask a Question</h2>
+            <p class="small">Questions can only be asked once per game.</p>
+            <div id="questionList" class="question-list"></div>
+          </section>
+
+          <section class="card">
+            <h2>Make a Guess</h2>
+            <select id="guessSelect"></select>
+            <button id="guessBtn" class="danger" type="button">Guess Opponent's Character</button>
+          </section>
+
+          <section class="card">
+            <div class="log-header">
+              <h2>Game Log</h2>
+              <button id="rematchBtn" class="secondary" type="button">Rematch</button>
+</html>
