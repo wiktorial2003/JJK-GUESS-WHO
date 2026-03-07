@@ -180,14 +180,15 @@ function renderCharacters() {
     }
 
     card.innerHTML = `
-      <div class="char-name">${character.name}</div>
-      <div class="small">Hair: ${capitalize(character.hair)}</div>
-      <div class="badge-row">
-        <span class="badge">${character.student ? 'Student' : 'Non-student'}</span>
-        <span class="badge">${capitalize(character.gender)}</span>
-        ${character.teacher ? '<span class="badge">Teacher</span>' : ''}
-      </div>
-    `;
+    <img src="${character.image}" class="char-image" alt="${character.name}">
+    <div class="char-name">${character.name}</div>
+    <div class="small">Hair: ${capitalize(character.hair)}</div>
+    <div class="badge-row">
+    <span class="badge">${character.student ? 'Student' : 'Non-student'}</span>
+    <span class="badge">${capitalize(character.gender)}</span>
+    ${character.teacher ? '<span class="badge">Teacher</span>' : ''}
+  </div>
+`;
 
     card.addEventListener('click', async () => {
       const me = getMyPlayer();

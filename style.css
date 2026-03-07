@@ -237,4 +237,15 @@ button:disabled {
   .log-header {
     flex-direction: column;
   }
+
+  .char-card {
+  min-height: 200px;
+}
+.char-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
 }
