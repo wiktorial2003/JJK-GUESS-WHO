@@ -1,4 +1,160 @@
 * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #14161f;
+  color: #f5f7fb;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+}
+
+.subtitle {
+  color: #b7bfd4;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #1d2130;
+  border: 1px solid #31384f;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.top-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.button-row {
+  margin-top: 12px;
+}
+
+label {
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: bold;
+}
+
+input,
+select,
+button {
+  border-radius: 10px;
+  border: 1px solid #3d4562;
+  background: #0f1220;
+  color: #f5f7fb;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+input,
+select {
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+  background: #5b7cff;
+  border: none;
+  font-weight: bold;
+}
+
+button.secondary {
+  background: #2f3752;
+}
+
+button.success {
+  background: #2ea44f;
+}
+
+button.danger {
+  background: #d9534f;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.small {
+  font-size: 13px;
+  color: #b7bfd4;
+}
+
+.status {
+  font-weight: bold;
+  padding: 12px;
+  background: #101525;
+  border: 1px solid #2b3350;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 16px;
+}
+
+.board-header,
+.log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.player-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.secret-choice {
+  margin-top: 12px;
+  font-weight: bold;
+  color: #ffd166;
+}
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.char-card {
+  background: #23293b;
+  border: 2px solid #38415c;
+  border-radius: 14px;
+  padding: 12px;
+  min-height: 150px;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.char-card:hover {
+  transform: translateY(-2px);
+}
 
 .char-card.selected {
   border-color: #ffd166;
@@ -81,5 +237,4 @@
   .log-header {
     flex-direction: column;
   }
-    }
 }
