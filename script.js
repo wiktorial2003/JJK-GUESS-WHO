@@ -13,6 +13,7 @@ import {
 const firebaseConfig = {
   apiKey: "AIzaSyBkgtA_dhslvLf4q9h52zC2PeCaaadQpf0",
   authDomain: "jjk-guess-who.firebaseapp.com",
+  databaseURL: "https://jjk-guess-who-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "jjk-guess-who",
   storageBucket: "jjk-guess-who.firebasestorage.app",
   messagingSenderId: "161558821877",
