@@ -238,7 +238,7 @@ function renderCharacters() {
 
 function renderQuestions() {
   questionList.innerHTML = '';
-  const disabled = !bothSelectedCharacters() || !isMyTurn() || !!roomState?.winner;
+  const disabled = !bothSelectedCharacters() || !isMyTurn() || !!roomState?.winner || hasPendingCustomQuestion();
   const askedIds = new Set(roomState?.askedQuestions || []);
 
   QUESTIONS.forEach((question, index) => {
@@ -305,6 +305,17 @@ function renderStatusFromState() {
     return;
   }
 
+  if (roomState?.pendingCustomQuestion) {
+    const pending = roomState.pendingCustomQuestion;
+
+    if (pending.from === currentPlayerId) {
+      setStatus('Waiting for your opponent to answer your custom question.');
+    } else {
+      setStatus('Answer your opponent’s custom question.');
+    }
+    return;
+  }
+
   if (!bothPlayersJoined()) {
     setStatus('Waiting for a second player to join...');
     return;
@@ -327,6 +338,10 @@ function renderStatusFromState() {
   }
 }
 
+function hasPendingCustomQuestion() {
+  return !!roomState?.pendingCustomQuestion;
+}
+
 function renderEverything() {
   renderLabels();
   renderCharacters();
@@ -334,7 +349,7 @@ function renderEverything() {
   renderGuessOptions();
   renderStatusFromState();
   renderCustomQuestionArea();
-  guessBtn.disabled = !bothSelectedCharacters() || !isMyTurn() || !!roomState?.winner;
+  guessBtn.disabled = !bothSelectedCharacters() || !isMyTurn() || !!roomState?.winner || hasPendingCustomQuestion();
 }
 
 async function chooseSecretCharacter(characterName) {
@@ -424,14 +439,13 @@ async function answerCustomQuestion(answer) {
   if (!roomState?.pendingCustomQuestion) return;
 
   const pending = roomState.pendingCustomQuestion;
+
   if (pending.from === currentPlayerId) {
     alert('You cannot answer your own question.');
     return;
   }
 
-  const nextTurn = currentPlayerId === roomState.playerOrder?.[0]
-    ? roomState.playerOrder?.[1]
-    : roomState.playerOrder?.[0];
+  const nextTurn = currentPlayerId;
 
   await push(ref(db, `rooms/${currentRoomCode}/log`), {
     text: `${getMyPlayer()?.name || 'Player'} answered custom question "${pending.text}" -> ${answer ? 'Yes' : 'No'}`,
