@@ -7,6 +7,9 @@ import {
   get,
   update,
   onValue,
+  getAuth,
+  signInAnonymously,
+  onAuthStateChanged,
   push,
   remove
 } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js';
@@ -26,10 +29,26 @@ const firebaseConfigured = !Object.values(firebaseConfig).some(value => String(v
 
 let app = null;
 let db = null;
+let auth = null;
+let firebaseReady = false;
 
 if (firebaseConfigured) {
   app = initializeApp(firebaseConfig);
   db = getDatabase(app);
+  auth = getAuth(app);
+}
+
+async function initializeFirebaseAuth() {
+  if (!firebaseConfigured || !auth) return;
+
+  try {
+    await signInAnonymously(auth);
+    firebaseReady = true;
+    console.log('Signed in anonymously');
+  } catch (error) {
+    console.error('Anonymous sign-in failed:', error);
+    alert('Firebase sign-in failed. Check that Anonymous Auth is enabled in Firebase.');
+  }
 }
 
 const CHARACTERS = [
@@ -466,6 +485,12 @@ async function cleanupExpiredRooms() {
 }
 
 async function createRoom() {
+
+if (!firebaseReady) {
+  alert('Still connecting to Firebase. Try again in a second.');
+  return;
+}
+
   if (!firebaseConfigured) {
     alert('You need to paste your Firebase config into script.js first.');
     return;
@@ -522,6 +547,12 @@ async function createRoom() {
 }
 
 async function joinRoom() {
+
+  if (!firebaseReady) {
+  alert('Still connecting to Firebase. Try again in a second.');
+  return;
+}  
+
   if (!firebaseConfigured) {
     alert('You need to paste your Firebase config into script.js first.');
     return;
@@ -698,6 +729,7 @@ applyRoomFromUrl();
 renderGuessOptions();
 renderCharacters();
 renderQuestions();
+initializeFirebaseAuth();
 
 if (!firebaseConfigured) {
   setStatus('Paste your Firebase config into script.js first, then deploy to GitHub Pages.');
