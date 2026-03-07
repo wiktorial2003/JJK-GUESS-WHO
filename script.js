@@ -46,10 +46,11 @@ async function initializeFirebaseAuth() {
   try {
     await signInAnonymously(auth);
     firebaseReady = true;
-    console.log('Signed in anonymously');
+    console.log("Signed in anonymously");
+
+    await cleanupExpiredRooms();
   } catch (error) {
-    console.error('Anonymous sign-in failed:', error);
-    alert('Firebase sign-in failed. Check that Anonymous Auth is enabled in Firebase.');
+    console.error("Anonymous login failed:", error);
   }
 }
 
@@ -258,6 +259,32 @@ function renderQuestions() {
     item.appendChild(text);
     questionList.appendChild(item);
   });
+}
+
+function renderCustomQuestionArea() {
+  const pending = roomState?.pendingCustomQuestion;
+
+  if (!pending) {
+    pendingQuestionText.textContent = 'No custom question waiting.';
+    answerYesBtn.disabled = true;
+    answerNoBtn.disabled = true;
+    askCustomBtn.disabled = !bothSelectedCharacters() || !isMyTurn() || !!roomState?.winner;
+    return;
+  }
+
+  const isForMe = pending.from !== currentPlayerId;
+
+  if (isForMe) {
+    pendingQuestionText.textContent = `Opponent asks: ${pending.text}`;
+    answerYesBtn.disabled = false;
+    answerNoBtn.disabled = false;
+    askCustomBtn.disabled = true;
+  } else {
+    pendingQuestionText.textContent = `Waiting for opponent to answer: ${pending.text}`;
+    answerYesBtn.disabled = true;
+    answerNoBtn.disabled = true;
+    askCustomBtn.disabled = true;
+  }
 }
 
 function renderLabels() {
@@ -726,7 +753,6 @@ function applyRoomFromUrl() {
   }
 }
 
-cleanupExpiredRooms();
 applyRoomFromUrl();
 renderGuessOptions();
 renderCharacters();
