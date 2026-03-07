@@ -33,18 +33,24 @@ if (firebaseConfigured) {
 }
 
 const CHARACTERS = [
-  { name: 'Yuji Itadori', gender: 'male', hair: 'pink', student: true, teacher: false, cursed_user: true, glasses: false, weapon: false, clan: false, special_grade: false, alive: true },
-  { name: 'Megumi Fushiguro', gender: 'male', hair: 'black', student: true, teacher: false, cursed_user: true, glasses: false, weapon: false, clan: true, special_grade: false, alive: true },
-  { name: 'Nobara Kugisaki', gender: 'female', hair: 'brown', student: true, teacher: false, cursed_user: true, glasses: false, weapon: true, clan: false, special_grade: false, alive: false },
-  { name: 'Satoru Gojo', gender: 'male', hair: 'white', student: false, teacher: true, cursed_user: true, glasses: true, weapon: false, clan: true, special_grade: true, alive: false },
-  { name: 'Maki Zenin', gender: 'female', hair: 'black', student: true, teacher: false, cursed_user: false, glasses: true, weapon: true, clan: true, special_grade: false, alive: true },
-  { name: 'Toge Inumaki', gender: 'male', hair: 'white', student: true, teacher: false, cursed_user: true, glasses: false, weapon: false, clan: true, special_grade: false, alive: true },
-  { name: 'Yuta Okkotsu', gender: 'male', hair: 'black', student: true, teacher: false, cursed_user: true, glasses: false, weapon: true, clan: false, special_grade: true, alive: true },
-  { name: 'Panda', gender: 'male', hair: 'other', student: true, teacher: false, cursed_user: false, glasses: false, weapon: false, clan: false, special_grade: false, alive: true },
-  { name: 'Kento Nanami', gender: 'male', hair: 'blond', student: false, teacher: false, cursed_user: true, glasses: true, weapon: true, clan: false, special_grade: false, alive: false },
-  { name: 'Suguru Geto', gender: 'male', hair: 'black', student: false, teacher: false, cursed_user: true, glasses: false, weapon: false, clan: false, special_grade: true, alive: false },
-  { name: 'Toji Fushiguro', gender: 'male', hair: 'black', student: false, teacher: false, cursed_user: false, glasses: false, weapon: true, clan: true, special_grade: false, alive: false },
-  { name: 'Mahito', gender: 'male', hair: 'blue', student: false, teacher: false, cursed_user: true, glasses: false, weapon: false, clan: false, special_grade: true, alive: false }
+  { name: 'Yuji Itadori', image:'images/yuji.jpg', gender: 'male', hair: 'pink', student: true, teacher: false, cursed_user: true, glasses: false, weapon: false, clan: false, special_grade: false, alive: true },
+  { name: 'Megumi Fushiguro', image:'images/megumi.jpg', gender: 'male', hair: 'black', student: true, teacher: false, cursed_user: true, glasses: false, weapon: false, clan: true, special_grade: false, alive: true },
+  { name: 'Nobara Kugisaki', image:'images/nobara.jpg', gender: 'female', hair: 'brown', student: true, teacher: false, cursed_user: true, glasses: false, weapon: true, clan: false, special_grade: false, alive: false },
+  { name: 'Satoru Gojo', image:'images/gojo.jpg', gender: 'male', hair: 'white', student: false, teacher: true, cursed_user: true, glasses: true, weapon: false, clan: true, special_grade: true, alive: false },
+  { name: 'Maki Zenin', image:'images/maki.jpg', gender: 'female', hair: 'black', student: true, teacher: false, cursed_user: false, glasses: true, weapon: true, clan: true, special_grade: false, alive: true },
+  { name: 'Toge Inumaki', image:'images/toge.jpg', gender: 'male', hair: 'white', student: true, teacher: false, cursed_user: true, glasses: false, weapon: false, clan: true, special_grade: false, alive: true },
+  { name: 'Yuta Okkotsu', image:'images/yuta.jpg', gender: 'male', hair: 'black', student: true, teacher: false, cursed_user: true, glasses: false, weapon: true, clan: false, special_grade: true, alive: true },
+  { name: 'Panda', image:'images/panda.jpg', gender: 'male', hair: 'other', student: true, teacher: false, cursed_user: false, glasses: false, weapon: false, clan: false, special_grade: false, alive: true },
+  { name: 'Kento Nanami', image:'images/nanami.jpg', gender: 'male', hair: 'blond', student: false, teacher: false, cursed_user: true, glasses: true, weapon: true, clan: false, special_grade: false, alive: false },
+  { name: 'Suguru Geto', image:'images/geto.jpg', gender: 'male', hair: 'black', student: false, teacher: false, cursed_user: true, glasses: false, weapon: false, clan: false, special_grade: true, alive: false },
+  { name: 'Toji Fushiguro', image:'images/toji.jpg', gender: 'male', hair: 'black', student: false, teacher: false, cursed_user: false, glasses: false, weapon: true, clan: true, special_grade: false, alive: false },
+  { name: 'Mahito', image:'images/mahito.jpg', gender: 'male', hair: 'blue', student: false, teacher: false, cursed_user: true, glasses: false, weapon: false, clan: false, special_grade: true, alive: false },
+  { name: 'Ryomen Sukuna', image:'images/sukuna.jpg', gender: 'male', hair: 'pink', student: false, teacher: false, cursed_user: true, glasses: false, weapon: false, clan: false, special_grade: true, alive: true },
+  { name: 'Hiromi Higuruma', image:'images/higuruma.jpg', gender: 'male', hair: 'brown', student: false, teacher: false, cursed_user: true, glasses: false, weapon: false, clan: false, special_grade: false, alive: false },
+  { name: 'Choso', image:'images/choso.jpg', gender: 'male', hair: 'black', student: false, teacher: false, cursed_user: true, glasses: false, weapon: false, clan: false, special_grade: false, alive: true },
+  { name: 'Jogo', image:'images/jogo.jpg', gender: 'male', hair: 'other', student: false, teacher: false, cursed_user: true, glasses: false, weapon: false, clan: false, special_grade: true, alive: false },
+  { name: 'Aoi Todo', image:'images/todo.jpg', gender: 'male', hair: 'black', student: true, teacher: false, cursed_user: true, glasses: false, weapon: false, clan: false, special_grade: false, alive: true },
+  { name: 'Kenjaku', image: 'images/kenjaku.jpg', gender: 'male', hair: 'black', student: false, teacher: false, cursed_user: true, glasses: false, weapon: false, clan: false, special_grade: true, alive: true }
 ];
 
 const QUESTIONS = [
@@ -61,7 +67,6 @@ const QUESTIONS = [
   { text: 'Does your character mainly use a weapon?', key: 'weapon', value: true },
   { text: 'Is your character from a clan family?', key: 'clan', value: true },
   { text: 'Is your character special grade?', key: 'special_grade', value: true },
-  { text: 'Is your character alive?', key: 'alive', value: true }
 ];
 
 const playerNameInput = document.getElementById('playerName');
@@ -81,6 +86,11 @@ const guessBtn = document.getElementById('guessBtn');
 const youLabel = document.getElementById('youLabel');
 const opponentLabel = document.getElementById('opponentLabel');
 const rematchBtn = document.getElementById('rematchBtn');
+const customQuestionInput = document.getElementById('customQuestionInput');
+const askCustomBtn = document.getElementById('askCustomBtn');
+const pendingQuestionText = document.getElementById('pendingQuestionText');
+const answerYesBtn = document.getElementById('answerYesBtn');
+const answerNoBtn = document.getElementById('answerNoBtn');
 
 let currentRoomCode = '';
 let currentPlayerId = '';
@@ -276,6 +286,7 @@ function renderEverything() {
   renderQuestions();
   renderGuessOptions();
   renderStatusFromState();
+  renderCustomQuestionArea();
   guessBtn.disabled = !bothSelectedCharacters() || !isMyTurn() || !!roomState?.winner;
 }
 
@@ -325,6 +336,65 @@ async function askQuestion(questionIndex) {
   await push(ref(db, `rooms/${currentRoomCode}/log`), {
     text: `${getMyPlayer()?.name || 'Player'} asked: ${question.text} -> ${answer ? 'Yes' : 'No'}`,
     createdAt: Date.now()
+  });
+}
+
+async function askCustomQuestion() {
+  if (!firebaseConfigured) return;
+  if (!roomState || roomState.winner) return;
+
+  if (!isMyTurn()) {
+    alert('Not your turn.');
+    return;
+  }
+
+  const questionText = customQuestionInput.value.trim();
+  if (!questionText) {
+    alert('Type a question first.');
+    return;
+  }
+
+  const opponent = getOpponentEntry();
+  if (!opponent) return;
+
+  await update(ref(db, `rooms/${currentRoomCode}`), {
+    pendingCustomQuestion: {
+      from: currentPlayerId,
+      text: questionText
+    }
+  });
+
+  await push(ref(db, `rooms/${currentRoomCode}/log`), {
+    text: `${getMyPlayer()?.name || 'Player'} asked a custom question: ${questionText}`,
+    createdAt: Date.now()
+  });
+
+  customQuestionInput.value = '';
+}
+
+async function answerCustomQuestion(answer) {
+  if (!firebaseConfigured) return;
+  if (!roomState?.pendingCustomQuestion) return;
+
+  const pending = roomState.pendingCustomQuestion;
+  if (pending.from === currentPlayerId) {
+    alert('You cannot answer your own question.');
+    return;
+  }
+
+  const nextTurn = currentPlayerId === roomState.playerOrder?.[0]
+    ? roomState.playerOrder?.[1]
+    : roomState.playerOrder?.[0];
+
+  await push(ref(db, `rooms/${currentRoomCode}/log`), {
+    text: `${getMyPlayer()?.name || 'Player'} answered custom question "${pending.text}" -> ${answer ? 'Yes' : 'No'}`,
+    createdAt: Date.now()
+  });
+
+  await update(ref(db, `rooms/${currentRoomCode}`), {
+    pendingCustomQuestion: null,
+    turn: nextTurn,
+    lastActivity: Date.now()
   });
 }
 
@@ -593,6 +663,9 @@ createRoomBtn.addEventListener('click', createRoom);
 joinRoomBtn.addEventListener('click', joinRoom);
 guessBtn.addEventListener('click', makeGuess);
 rematchBtn.addEventListener('click', requestRematch);
+askCustomBtn.addEventListener('click', askCustomQuestion);
+answerYesBtn.addEventListener('click', () => answerCustomQuestion(true));
+answerNoBtn.addEventListener('click', () => answerCustomQuestion(false));
 
 copyInviteBtn.addEventListener('click', async () => {
   if (!currentRoomCode) return;

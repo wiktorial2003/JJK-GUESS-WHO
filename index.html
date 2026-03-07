@@ -89,6 +89,23 @@
             </div>
             <div id="log" class="log"></div>
           </section>
+
+          <section class="card">
+            <h2>Ask Your Own Question</h2>
+            <p class="small">Custom questions must be answered manually by your opponent.</p>
+            <input id="customQuestionInput" type="text" maxlength="120" placeholder="Type your own yes/no question" />
+            <div style="height:10px;"></div>
+            <button id="askCustomBtn" type="button">Ask Custom Question</button>
+          </section>
+
+          <section class="card">
+            <h2>Answer Opponent Question</h2>
+            <p id="pendingQuestionText" class="small">No custom question waiting.</p>
+            <div class="row">
+              <button id="answerYesBtn" class="success" type="button">Yes</button>
+              <button id="answerNoBtn" class="danger" type="button">No</button>
+            </div>
+          </section>
         </div>
       </div>
     </main>
