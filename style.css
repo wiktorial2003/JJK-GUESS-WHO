@@ -234,6 +234,7 @@ button:disabled {
   white-space: pre-wrap;
   line-height: 1.45;
   font-size: 14px;
+  font-family: monospace;
 }
 
 .hidden {

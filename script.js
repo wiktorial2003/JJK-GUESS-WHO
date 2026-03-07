@@ -86,6 +86,9 @@ const askCustomBtn = document.getElementById('askCustomBtn');
 const pendingQuestionText = document.getElementById('pendingQuestionText');
 const answerYesBtn = document.getElementById('answerYesBtn');
 const answerNoBtn = document.getElementById('answerNoBtn');
+const howToPlayCard = document.getElementById('howToPlayCard');
+const topLogCard = document.getElementById('topLogCard');
+const topLog = document.getElementById('topLog');
 
 let currentRoomCode = '';
 let currentPlayerId = '';
@@ -515,6 +518,7 @@ async function createRoom() {
 
   connectToRoom(code);
   copyInviteBtn.classList.remove('hidden');
+  
 }
 
 async function joinRoom() {
@@ -572,6 +576,10 @@ async function joinRoom() {
 
 function connectToRoom(code) {
   gameArea.classList.remove('hidden');
+
+  howToPlayCard.classList.add('hidden');
+  topLogCard.classList.remove('hidden');
+
   localEliminated = new Set();
 
   onValue(ref(db, `rooms/${code}`), snapshot => {
@@ -591,7 +599,10 @@ function connectToRoom(code) {
   onValue(ref(db, `rooms/${code}/log`), snapshot => {
     const entries = snapshot.val() || {};
     const sorted = Object.values(entries).sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
-    log.textContent = sorted.map(entry => entry.text).join('\n');
+    const logText = sorted.map(entry => entry.text).join('\n');
+
+    log.textContent = logText;
+    topLog.textContent = logText;
     log.scrollTop = log.scrollHeight;
   });
 }
