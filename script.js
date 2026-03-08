@@ -76,14 +76,7 @@ const CHARACTERS = [
 ];
 
 const QUESTIONS = [
-  { text: 'Is your character male?', key: 'gender', value: 'male' },
-  { text: 'Is your character female?', key: 'gender', value: 'female' },
-  { text: 'Is your character a student?', key: 'student', value: true },
-  { text: 'Is your character a teacher?', key: 'teacher', value: true },
-  { text: 'Does your character use cursed energy/techniques?', key: 'cursed_user', value: true },
-  { text: 'Does your character mainly use a weapon?', key: 'weapon', value: true },
-  { text: 'Is your character from a clan family?', key: 'clan', value: true },
-  { text: 'Is your character special grade?', key: 'special_grade', value: true },
+  
 ];
 
 const playerNameInput = document.getElementById('playerName');
